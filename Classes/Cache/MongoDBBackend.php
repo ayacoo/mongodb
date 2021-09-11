@@ -16,7 +16,7 @@ use TYPO3\CMS\Core\Cache\Exception\InvalidDataException;
  * PHP module. MongoDB is a source-available cross-platform document-oriented database program. Classified
  * as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.
  */
-class MongoBackend extends AbstractBackend implements TaggableBackendInterface
+class MongoDBBackend extends AbstractBackend implements TaggableBackendInterface
 {
     private const DEFAULT_LIFETIME = 3600;
 
@@ -43,7 +43,7 @@ class MongoBackend extends AbstractBackend implements TaggableBackendInterface
     /**
      * MongoDB collection name
      */
-    private string $collectionName = 'test';
+    private string $collectionName = 'cache';
 
     /**
      * Hostname / IP of the MongoDB server, defaults to mongo (ddev setting)
