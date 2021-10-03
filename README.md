@@ -5,7 +5,7 @@ With this cache backend you can store and use data in MongoDB in TYPO3 via the c
 # Introduction
 The whole thing is a proof of concept and was not tested in production. It was a test of the ddev possibilities and the TYPO3 Cache API in version 11.4. This repo merely documents the knowledge that has been built up.
 
-It is based on the RedisBackend of TYPO3.
+It is based on the [RedisBackend](https://github.com/TYPO3/typo3/blob/master/typo3/sysext/core/Classes/Cache/Backend/RedisBackend.php) of TYPO3.
 
 # Preparations
 
@@ -34,7 +34,7 @@ if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations
 }
 ```
 
-### Mongo DB cache - Based on the default values
+### MongoDB cache - Based on the default values
 ```
 if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['my_cache'])) {
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['my_cache'] = [];
@@ -43,7 +43,7 @@ if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations
 }
 ```
 
-### Mongo DB cache - with all custom options
+### MongoDB cache - with all custom options
 ```
 if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['my_cache'])) {
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['my_cache'] = [];
