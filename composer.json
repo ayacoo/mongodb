@@ -1,8 +1,8 @@
 {
 	"name": "ayacoo/mongodb",
 	"type": "typo3-cms-extension",
-	"version": "2.1.0",
-	"description": "TYPO3 Mongo DB cache backend",
+	"version": "1.0.0",
+	"description": "TYPO3 MongoDB cache backend",
 	"authors": [
 		{
 			"name": "Guido Schmechel",
@@ -12,7 +12,7 @@
 	"homepage": "https://www.ayacoo.de/",
 	"license": "GPL-2.0-or-later",
 	"require": {
-		"php": "7.4",
+		"php": "^7.4 || ^8.0",
 		"ext-mongodb": "*",
 		"mongodb/mongodb": "^1.9",
 		"typo3/cms-core": "^11.0"
