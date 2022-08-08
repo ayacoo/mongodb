@@ -17,6 +17,10 @@
 		"mongodb/mongodb": "^1.9",
 		"typo3/cms-core": "^11.0"
 	},
+	"require-dev": {
+		"friendsofphp/php-cs-fixer": "^3.4.0",
+		"typo3/coding-standards": "^0.5.3"
+	},
 	"autoload": {
 		"psr-4": {
 			"Ayacoo\\MongoDB\\": "Classes/"
@@ -30,6 +34,16 @@
 			"extension-key": "mongodb",
 			"cms-package-dir": "{$vendor-dir}/typo3/cms",
 			"web-dir": ".Build/Web"
+		}
+	},
+	"scripts": {
+		"ci:php:lint": "find *.php Classes -name '*.php' -print0 | xargs -r -0 -n 1 -P 4 php -l",
+		"ci:php:sniff": "phpcs Classes"
+	},
+	"config": {
+		"allow-plugins": {
+			"typo3/cms-composer-installers": true,
+			"typo3/class-alias-loader": true
 		}
 	}
 }

@@ -75,7 +75,8 @@ class MongoDBBackend extends AbstractBackend implements TaggableBackendInterface
     public function __construct($context, array $options = [])
     {
         if (!extension_loaded('MongoDB')) {
-            throw new Exception('The PHP extension "MongoDB" must be installed and loaded in order to use the MongoDB backend.', 1631360188);
+            throw new Exception('The PHP extension "MongoDB" must be installed and loaded in
+            order to use the MongoDB backend.', 1631360188);
         }
 
         parent::__construct($context, $options);
@@ -163,17 +164,23 @@ class MongoDBBackend extends AbstractBackend implements TaggableBackendInterface
     public function set($entryIdentifier, $data, array $tags = [], $lifetime = null)
     {
         if (!$this->canBeUsedInStringContext($entryIdentifier)) {
-            throw new \InvalidArgumentException('The specified identifier is of type "' . gettype($entryIdentifier) . '" which can\'t be converted to string.', 1377006651);
+            throw new \InvalidArgumentException('The specified identifier is of type "' .
+                gettype($entryIdentifier) . '" which can\'t be converted to string.', 1377006651);
         }
         if (!is_string($data)) {
-            throw new InvalidDataException('The specified data is of type "' . gettype($data) . '" but a string is expected.', 1279469941);
+            throw new InvalidDataException('The specified data is of type "' .
+                gettype($data) . '" but a string is expected.', 1279469941);
         }
         $lifetime = $lifetime ?? self::DEFAULT_LIFETIME;
         if (!is_int($lifetime)) {
-            throw new \InvalidArgumentException('The specified lifetime is of type "' . gettype($lifetime) . '" but an integer or NULL is expected.', 1279488008);
+            throw new \InvalidArgumentException('The specified lifetime is of type "' .
+                gettype($lifetime) . '" but an integer or NULL is expected.', 1279488008);
         }
         if ($lifetime < 0) {
-            throw new \InvalidArgumentException('The specified lifetime "' . $lifetime . '" must be greater or equal than zero.', 1279487573);
+            throw new \InvalidArgumentException(
+                'The specified lifetime "' . $lifetime . '" must be greater or equal than zero.',
+                1279487573
+            );
         }
         if ($this->connected) {
             $dateAsTimestamp = time() + $lifetime;
@@ -196,7 +203,8 @@ class MongoDBBackend extends AbstractBackend implements TaggableBackendInterface
     public function get($entryIdentifier)
     {
         if (!$this->canBeUsedInStringContext($entryIdentifier)) {
-            throw new \InvalidArgumentException('The specified identifier is of type "' . gettype($entryIdentifier) . '" which can\'t be converted to string.', 1377006652);
+            throw new \InvalidArgumentException('The specified identifier is of type "'
+                . gettype($entryIdentifier) . '" which can\'t be converted to string.', 1377006652);
         }
         if ($this->connected) {
             $result = $this->collection->find(['key' => $entryIdentifier]);
@@ -218,7 +226,8 @@ class MongoDBBackend extends AbstractBackend implements TaggableBackendInterface
     public function has($entryIdentifier)
     {
         if (!$this->canBeUsedInStringContext($entryIdentifier)) {
-            throw new \InvalidArgumentException('The specified identifier is of type "' . gettype($entryIdentifier) . '" which can\'t be converted to string.', 1377006653);
+            throw new \InvalidArgumentException('The specified identifier is of type "'
+                . gettype($entryIdentifier) . '" which can\'t be converted to string.', 1377006653);
         }
         if ($this->connected) {
             $result = $this->collection->find(['key' => $entryIdentifier]);
@@ -240,7 +249,8 @@ class MongoDBBackend extends AbstractBackend implements TaggableBackendInterface
     public function remove($entryIdentifier)
     {
         if (!$this->canBeUsedInStringContext($entryIdentifier)) {
-            throw new \InvalidArgumentException('The specified identifier is of type "' . gettype($entryIdentifier) . '" which can\'t be converted to string.', 1377006654);
+            throw new \InvalidArgumentException('The specified identifier is of type "'
+                . gettype($entryIdentifier) . '" which can\'t be converted to string.', 1377006654);
         }
         if ($this->connected) {
             $result = $this->collection->deleteMany(
@@ -266,7 +276,8 @@ class MongoDBBackend extends AbstractBackend implements TaggableBackendInterface
     public function findIdentifiersByTag($tag)
     {
         if (!$this->canBeUsedInStringContext($tag)) {
-            throw new \InvalidArgumentException('The specified tag is of type "' . gettype($tag) . '" which can\'t be converted to string.', 1377006655);
+            throw new \InvalidArgumentException('The specified tag is of type "'
+                . gettype($tag) . '" which can\'t be converted to string.', 1377006655);
         }
         if ($this->connected) {
             return $this->collection->find(['tags' => $tag]);
@@ -298,7 +309,8 @@ class MongoDBBackend extends AbstractBackend implements TaggableBackendInterface
     public function flushByTag($tag)
     {
         if (!$this->canBeUsedInStringContext($tag)) {
-            throw new \InvalidArgumentException('The specified tag is of type "' . gettype($tag) . '" which can\'t be converted to string.', 1377006656);
+            throw new \InvalidArgumentException('The specified tag is of type "'
+                . gettype($tag) . '" which can\'t be converted to string.', 1377006656);
         }
         if ($this->connected) {
             $this->collection->deleteMany(
@@ -314,7 +326,6 @@ class MongoDBBackend extends AbstractBackend implements TaggableBackendInterface
      */
     public function collectGarbage()
     {
-
     }
 
     /**
