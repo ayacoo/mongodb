@@ -62,6 +62,6 @@ if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations
 
 Note: MongoDB is so smart that the collection and the database, if non-existent, are created immediately.
 
-# More documentation
+# More Documentation
 
 https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/CachingFramework/Configuration/Index.html
